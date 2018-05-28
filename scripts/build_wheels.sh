@@ -18,7 +18,6 @@ mkdir -p /io/samba
 	./configure --prefix=/usr/local --disable-python --without-ad-dc --enable-fhs --without-ldap --without-ads --without-pam
 	make -j4
 	make install
-	install -m644 pkgconfig/*.pc /usr/local/lib/pkgconfig/
 )
 
 (
@@ -31,6 +30,7 @@ mkdir -p /io/samba
 	LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 	for PYBIN in /opt/python/*/bin; do
 	    "${PYBIN}/python" setup.py bdist_wheel --dist-dir /io/wheelhouse/
+        rm -rf dist build
 	done
 
 	# Bundle external shared libraries into the wheels
