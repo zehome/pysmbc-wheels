@@ -1,5 +1,8 @@
 #!/bin/bash
+
 set -e -x
+
+rm -rf /io/wheelhouse
 
 # Install a system package required by our library
 yum install -y gettext
@@ -27,9 +30,8 @@ mkdir -p /io/samba
 		sed -i 's/name="pysmbc"/name="pysmbc-binary"/' setup.py
 	fi
 	# Compile wheels
-	LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-	for PYBIN in /opt/python/*/bin; do
-	    "${PYBIN}/python" setup.py bdist_wheel --dist-dir /io/wheelhouse/
+	for PYVER in /opt/python/*; do
+	    LD_LIBRARY_PATH=$PYVER/lib:/usr/local/lib:$LD_LIBRARY_PATH PATH=$PYVER/bin:$PATH ${PYVER}/bin/python setup.py bdist_wheel --dist-dir /io/wheelhouse/
         rm -rf dist build
 	done
 
