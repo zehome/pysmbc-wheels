@@ -18,7 +18,7 @@ mkdir -p /io/samba
 	tar xf samba-4.9.3.tar.gz
 	cd samba-4.9.3
 	PATH=/opt/python/cp27-cp27m/bin/:$PATH
-	./configure --prefix=/usr/local --disable-python --without-ad-dc --enable-fhs --without-ldap --without-ads --without-pam --without-json-audit
+	./configure --prefix=/usr/local --disable-python --without-ad-dc --enable-fhs --without-ldap --without-ads --without-pam --without-json-audit --without-libarchive
 	make -j4
 	make install
 )
