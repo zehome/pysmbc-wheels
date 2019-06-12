@@ -14,9 +14,9 @@ mkdir -p /io/samba
 (
 	cd /io/samba
 	yum install -y libacl-devel e2fsprogs-devel readline-deve gdb gcc gcc-c++ zlib-devel
-	curl https://download.samba.org/pub/samba/stable/samba-4.9.3.tar.gz -o samba-4.9.3.tar.gz
-	tar xf samba-4.9.3.tar.gz
-	cd samba-4.9.3
+	curl https://download.samba.org/pub/samba/stable/samba-4.9.8.tar.gz -o samba-4.9.8.tar.gz
+	tar xf samba-4.9.8.tar.gz
+	cd samba-4.9.8
 	PATH=/opt/python/cp27-cp27m/bin/:$PATH
 	./configure --prefix=/usr/local --disable-python --without-ad-dc --enable-fhs --without-ldap --without-ads --without-pam --without-json-audit --without-libarchive
 	make -j4
